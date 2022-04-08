@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "emergence"
+version = "0.1.0"
+description = "LibCST codemod collection"
+authors = ["William Turner <william.turner@aero.bombardier.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+inflector = "^3.0.1"
+libcst = "^0.4.1"
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+isort = "^5.10.1"
+pylint = "^2.13.5"
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+pytest-icdiff = "^0.5"
+pytest-xdist = "^2.5.0"
+
+[tool.black]
+line-length = 88
+target-version = ["py39", "py310"]
+
+[tool.pylint.message-control]
+disable = [
+  "abstract-method",
+  "duplicate-code",
+  "fixme",
+  "import-error",
+  "import-outside-toplevel",
+  "invalid-str-returned",
+  "line-too-long",
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "missing-module-docstring",
+  "no-else-return",
+  "no-member",
+  "no-self-use",
+  "protected-access",
+  "too-few-public-methods",
+  "too-many-ancestors",
+  "too-many-lines",
+  "useless-import-alias",
+  "wrong-import-order",
+]
+
+[tool.pylint.basic]
+good-names-rgxs = [
+  '^_?[A-Z]$',
+  '^_?T_.',
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pyright]
+pythonVersion = "3.9"
+pythonPlatform = "Linux"
+useLibraryCodeForTypes = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+combine_as_imports = true
+combine_star = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
